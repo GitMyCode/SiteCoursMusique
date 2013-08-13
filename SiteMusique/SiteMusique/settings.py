@@ -4,7 +4,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ("Philippe Guay", "guay.philippe@gmail.com"),
+    ("Martin Bouchard", "marbouchl@gmail.com"),
 )
 
 MANAGERS = ADMINS
@@ -20,6 +21,9 @@ DATABASES = {
     }
 }
 
+TEMPLATE_DIRS = (
+    "C:\cygwin64\home\Quantik\projects\sitemusique\SiteCoursMusique\SiteMusique\templates"
+)
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -119,12 +123,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'coreapp',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
 
+APPEND_SLASH = True
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
