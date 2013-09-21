@@ -1,10 +1,10 @@
 from django.db import models
 
-PIANO = 'PIANO'
-SAXOPHONE = 'SAXOPHONE'
-GUITAR = 'GUITAR'
-BATTERY = 'BATTERY'
-FLUTE = 'FLUTE'
+PIANO = 'Piano'
+SAXOPHONE = 'Saxophone'
+GUITAR = 'Guitare'
+BATTERY = 'Batterie'
+FLUTE = 'Flute'
 INSTRUMENTS = (
     (PIANO, 'Piano'),
     (SAXOPHONE, 'Saxophone'),

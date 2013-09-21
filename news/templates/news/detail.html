@@ -1,0 +1,36 @@
+<h1>{{ new.title }}</h1>
+<h2>{{ new.creation_date }}</h2>
+<p>
+   {{ new.content }}
+</p>
+
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<ul>
+   
+
+
+<form action="{% url 'news:comment' new.id %}" method="post">
+   {% csrf_token %}
+   <p>
+      <label for="author">Auteur</label>
+      <input type="text" name="author">
+   </p>
+   <p>
+      <textarea cols="100" rows="10" name="comment" id="comment">Enter Comments...</textarea>
+   </p>
+
+   <input type="submit" value='comment'>
+
+</form>
+
+<h1>Commentaires</h1>
+{% for comment in comments %}
+   <li>
+      {{ comment.author }}
+      {{ comment.creation_date }}
+      {{ comment.comment }}
+   </li>
+{% endfor %}
+</ul>
