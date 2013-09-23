@@ -1,0 +1,11 @@
+{% if teachers %}
+<ul>
+   {% for teacher in teachers %}
+      <li>
+         <a href="{% url 'teachers:detail' teacher.id %}">{{ teacher.name }} {{ teacher.surname }}</a>
+      </li>
+   {% endfor %}
+</ul>
+{% else %}
+   <p>No teachers currently available</p>
+{% endif %}
