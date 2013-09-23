@@ -10,4 +10,5 @@ class NewAdmin(admin.ModelAdmin):
    list_filter = ['creation_date']
    date_hierarchy = 'creation_date'
    inlines = [CommentInline]
+   list_display = ('title','was_published_recently')
 admin.site.register(New, NewAdmin)

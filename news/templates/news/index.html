@@ -1,9 +1,21 @@
+{% extends "header.html" %}
+<!-- {% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'news/styling.less' %}" /> -->
+
+
+
+{% block body %}
+
 {% if latest_news %}
-    <ul>
+    <ul class="list-group">
     {% for new in latest_news %}
-        <li><a href="{% url 'news:detail' new.id %}">{{ new.title }}: {{ new.content|slice:":50"|lower}} ...</a></li>
+        <li class="list-group-item"><a href="{% url 'news:detail' new.id %}">{{ new.title }}: {{ new.content|slice:":50"|lower}} ...</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No news are available.</p>
 {% endif %}
+
+{% endblock body %}
