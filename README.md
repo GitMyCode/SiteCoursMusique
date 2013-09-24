@@ -2,6 +2,14 @@ SiteCoursMusique
 ================
 
 ===
+DEPENDANCIES
+   * django.1.5
+   * compare.py
+   * twitter bootstrap-3.0.0
+   * LESS css engine
+   
+
+===
 cd /SiteCoursMusique 
 
 python manage.py runserver
