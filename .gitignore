@@ -2,4 +2,5 @@
 conf.py
 dev.db
 db
-.swp
+*.swp
+*.swo
