@@ -10,13 +10,17 @@ DEPENDANCIES
    
 
 ===
-cd /SiteCoursMusique 
+cd /SiteCoursMusique/mysite
+cp conf.py.edit conf.py
 
-python manage.py runserver
+ensuite editer DATABASES dans conf.py 
+ aussi nommé son fichier db ou dev.db pour qu'il ne soit pas commit (gitignore)
+
+cd ..
+./manage.py syncdb
+./ manage.py runserver
 
 browser: http://127.0.0.1:8000/admin
-
-edit database connection string in mysite/settings.py :: DATABASES
 
 
 ===
