@@ -1,2 +1,4 @@
 *.pyc
 conf.py
+dev.db
+db
