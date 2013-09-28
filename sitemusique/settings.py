@@ -2,7 +2,6 @@
 import os
 from conf import *
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
