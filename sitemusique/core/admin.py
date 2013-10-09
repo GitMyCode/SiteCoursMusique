@@ -30,8 +30,8 @@ admin.site.register(Blog, BlogAdmin)
 
 
 class ProfesseursAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'prenom')
-    fields = ['nom', 'prenom']
+    list_display = ('prenom' , 'nom', 'biographie' )
+    fields = ['nom', 'prenom', 'biographie']
 
 
 admin.site.register(Professeurs, ProfesseursAdmin)

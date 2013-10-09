@@ -2,6 +2,7 @@ from django.db import models
 
 import datetime
 from django.utils import timezone
+from tinymce.models import HTMLField
 
 PIANO = 'Piano'
 SAXOPHONE = 'Saxophone'
@@ -18,6 +19,55 @@ INSTRUMENTS = (
 # =======================================================
 # Generic Model
 # =======================================================
+
+
+
+################################################################################
+# CONSTANTES (CONSTANTS)
+################################################################################
+HELP_TEXT_FORMAT_DATE = "Le format de la date est JJ-MM-AAAA"
+
+
+# =======================================================
+# CLASSE ABSTRAITES
+# =======================================================
+class Metadata(models.Model):
+    actif = models.BooleanField(default=True)
+    date_creation = models.DateTimeField(auto_now_add=True,
+                                    help_text='HELP_TEXT_FORMAT_DATE', )
+    date_modification = models.DateTimeField(auto_now=True,
+                                    help_text=HELP_TEXT_FORMAT_DATE, )
+
+    class Meta:
+        abstract = True
+
+
+
+# =======================================================
+# Teacher Model
+# =======================================================
+class Professeurs(Metadata):
+    nom = models.CharField(max_length=255)
+    prenom = models.CharField(max_length=255)
+    biographie = HTMLField()
+
+
+# =======================================================
+# Cours Model
+# =======================================================
+
+class Cours(Metadata):
+    professeurs = models.ManyToManyField(Professeurs)
+
+    instruments = models.CharField(max_length=200)
+    description = models.CharField(max_length=1000)
+    prix = models.FloatField()
+
+
+
+
+
+
 
 # =======================================================
 # Blog Model
@@ -49,56 +99,6 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.author + self.comment[:10]
-
-
-################################################################################
-# CONSTANTES (CONSTANTS)
-################################################################################
-HELP_TEXT_FORMAT_DATE = "Le format de la date est JJ-MM-AAAA"
-
-
-# =======================================================
-# CLASSE ABSTRAITES
-# =======================================================
-class Metadata(models.Model):
-    actif = models.BooleanField(default=True)
-    date_creation = models.DateTimeField(auto_now_add=True,
-                                    help_text='HELP_TEXT_FORMAT_DATE', )
-    date_modification = models.DateTimeField(auto_now=True,
-                                    help_text=HELP_TEXT_FORMAT_DATE, )
-
-    class Meta:
-        abstract = True
-
-
-
-
-# =======================================================
-# Teacher Model
-# =======================================================
-class Professeurs(Metadata):
-    nom = models.CharField(max_length=255)
-    prenom = models.CharField(max_length=255)
-    biographie = models.TextField()
-
-
-# =======================================================
-# Cours Model
-# =======================================================
-
-class Cours(Metadata):
-    professeurs = models.ManyToManyField(Professeurs)
-
-    instruments = models.CharField(max_length=200)
-    description = models.CharField(max_length=1000)
-    prix = models.FloatField()
-
-
-
-
-
-
-
 
 
 
