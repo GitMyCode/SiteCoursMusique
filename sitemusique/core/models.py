@@ -27,7 +27,6 @@ INSTRUMENTS = (
 ################################################################################
 HELP_TEXT_FORMAT_DATE = "Le format de la date est JJ-MM-AAAA"
 
-
 # =======================================================
 # CLASSE ABSTRAITES
 # =======================================================
@@ -49,7 +48,7 @@ class Metadata(models.Model):
 class Professeurs(Metadata):
     nom = models.CharField(max_length=255)
     prenom = models.CharField(max_length=255)
-    biographie = HTMLField()
+    biographie = models.TextField()
 
 
 # =======================================================

@@ -30,8 +30,10 @@ admin.site.register(Blog, BlogAdmin)
 
 
 class ProfesseursAdmin(admin.ModelAdmin):
-    list_display = ('prenom' , 'nom', 'biographie' )
-    fields = ['nom', 'prenom', 'biographie']
+    # list_display = ('prenom' , 'nom', 'biographie' )
+    # fields = ['nom', 'prenom', 'biographie']
+    class Media:
+        js = ('media/js/tiny_mce/tiny_mce.js', 'media/js/tiny_mce/textareas.js',)
 
 
 admin.site.register(Professeurs, ProfesseursAdmin)
