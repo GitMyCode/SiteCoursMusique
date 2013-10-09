@@ -2,14 +2,18 @@ from django.contrib import admin
 from models import (
                     Blog,
                     Comment,
-                    Professeurs
+                    Generique,
+                    Professeurs,
+                    Cours,
                     )
+class general(admin.ModelAdmin):
+    class Media:
+        js = ('media/js/tiny_mce/tiny_mce.js', 'media/js/tiny_mce/textareas.js',)
 
 
 class CommentInline(admin.TabularInline):
     model = Comment
     extra = 1
-
 
 class BlogAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -28,12 +32,22 @@ admin.site.register(Blog, BlogAdmin)
 
 
 
+class GeneriqueAdmin(general):
+    list_display = ('texteAcceuil' , 'texteContact' )
+    fields = ['texteAcceuil' , 'texteContact']
 
-class ProfesseursAdmin(admin.ModelAdmin):
-    # list_display = ('prenom' , 'nom', 'biographie' )
-    # fields = ['nom', 'prenom', 'biographie']
-    class Media:
-        js = ('media/js/tiny_mce/tiny_mce.js', 'media/js/tiny_mce/textareas.js',)
+admin.site.register(Generique, GeneriqueAdmin)
 
+class CoursAdmin(general):
+    list_display = ('instruments' , 'prix', 'description' )
+    fields = ['instruments' , 'prix', 'description','professeurs']
+admin.site.register(Cours, CoursAdmin)
+
+
+
+
+class ProfesseursAdmin(general):
+    list_display = ('prenom' , 'nom', 'biographie' )
+    fields = ['nom', 'prenom', 'biographie']
 
 admin.site.register(Professeurs, ProfesseursAdmin)

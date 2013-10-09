@@ -11,6 +11,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
+
+TEMPLATE_DIRS = [os.path.join(os.path.dirname(__file__),'templates')]
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []

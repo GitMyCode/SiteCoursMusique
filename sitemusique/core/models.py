@@ -16,16 +16,12 @@ INSTRUMENTS = (
     (BATTERY, 'Batterie'),
     (FLUTE, 'Flute'),
 )
-# =======================================================
-# Generic Model
-# =======================================================
-
-
 
 ################################################################################
 # CONSTANTES (CONSTANTS)
 ################################################################################
 HELP_TEXT_FORMAT_DATE = "Le format de la date est JJ-MM-AAAA"
+
 
 # =======================================================
 # CLASSE ABSTRAITES
@@ -43,6 +39,14 @@ class Metadata(models.Model):
 
 
 # =======================================================
+# Generic Model
+# =======================================================
+
+class Generique(Metadata):
+    texteAcceuil = models.TextField()
+    texteContact = models.TextField()
+
+# =======================================================
 # Teacher Model
 # =======================================================
 class Professeurs(Metadata):
@@ -57,9 +61,8 @@ class Professeurs(Metadata):
 
 class Cours(Metadata):
     professeurs = models.ManyToManyField(Professeurs)
-
-    instruments = models.CharField(max_length=200)
-    description = models.CharField(max_length=1000)
+    instruments = models.CharField(max_length=255)
+    description = models.TextField()
     prix = models.FloatField()
 
 
