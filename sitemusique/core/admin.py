@@ -1,5 +1,9 @@
 from django.contrib import admin
-from models import Blog, Comment, Teacher, Instrument
+from models import (
+                    Blog,
+                    Comment,
+                    Professeurs
+                    )
 
 
 class CommentInline(admin.TabularInline):
@@ -23,15 +27,11 @@ class BlogAdmin(admin.ModelAdmin):
 admin.site.register(Blog, BlogAdmin)
 
 
-class InstrumentInline(admin.TabularInline):
-    model = Teacher.instruments.through
 
 
-class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'instruments_taught')
-    fields = ['name', 'surname']
-    inlines = [InstrumentInline]
+class ProfesseursAdmin(admin.ModelAdmin):
+    list_display = ('nom', 'prenom')
+    fields = ['nom', 'prenom']
 
 
-admin.site.register(Teacher, TeacherAdmin)
-admin.site.register(Instrument)
+admin.site.register(Professeurs, ProfesseursAdmin)

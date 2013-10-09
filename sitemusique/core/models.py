@@ -51,33 +51,87 @@ class Comment(models.Model):
         return self.author + self.comment[:10]
 
 
+################################################################################
+# CONSTANTES (CONSTANTS)
+################################################################################
+HELP_TEXT_FORMAT_DATE = "Le format de la date est JJ-MM-AAAA"
+
+
+# =======================================================
+# CLASSE ABSTRAITES
+# =======================================================
+class Metadata(models.Model):
+    actif = models.BooleanField(default=True)
+    date_creation = models.DateTimeField(auto_now_add=True,
+                                    help_text='HELP_TEXT_FORMAT_DATE', )
+    date_modification = models.DateTimeField(auto_now=True,
+                                    help_text=HELP_TEXT_FORMAT_DATE, )
+
+    class Meta:
+        abstract = True
+
+
+
+
 # =======================================================
 # Teacher Model
 # =======================================================
-
-class Instrument(models.Model):
-    instr_name = models.CharField(max_length=40)
-
-    def __unicode__(self):
-        return self.instr_name
+class Professeurs(Metadata):
+    nom = models.CharField(max_length=255)
+    prenom = models.CharField(max_length=255)
+    biographie = models.TextField()
 
 
-class Teacher(models.Model):
-    name = models.CharField(max_length=40)
-    surname = models.CharField(max_length=40)
-    instruments = models.ManyToManyField(Instrument)
-    biography = models.TextField()
+# =======================================================
+# Cours Model
+# =======================================================
 
-    def __unicode__(self):
-        return self.name + ' ' + self.surname
+class Cours(Metadata):
+    professeurs = models.ManyToManyField(Professeurs)
 
-    def instruments_taught(obj):
-        instrument_list = ', '.join([x.__unicode__() for x in obj.instruments.all()])
-        return instrument_list
+    instruments = models.CharField(max_length=200)
+    description = models.CharField(max_length=1000)
+    prix = models.FloatField()
 
-    instruments_taught.admin_order_field = 'name'
-    instruments_taught.boolean = False
-    instruments_taught.short_description = 'Instruments taught'
+
+
+
+
+
+
+
+
+
+
+# class Instrument(Metadata):
+#     instr_name = models.CharField(max_length=40)
+
+#     def __unicode__(self):
+#         return self.instr_name
+
+
+
+
+
+
+
+
+# class Teacher(Metadata):
+#     name = models.CharField(max_length=40)
+#     surname = models.CharField(max_length=40)
+#     instruments = models.ManyToManyField(Instrument)
+#     biography = models.TextField()
+
+#     def __unicode__(self):
+#         return self.name + ' ' + self.surname
+
+#     def instruments_taught(obj):
+#         instrument_list = ', '.join([x.__unicode__() for x in obj.instruments.all()])
+#         return instrument_list
+
+#     instruments_taught.admin_order_field = 'name'
+#     instruments_taught.boolean = False
+#     instruments_taught.short_description = 'Instruments taught'
 
 
 # =======================================================
@@ -85,7 +139,7 @@ class Teacher(models.Model):
 # =======================================================
 
 
-# class Media(models.Model):
+# class Media(Metadata):
 #     title  = models.CharField(max_length=100)
 #     description = models.TextField()
 #     date_pub = models.DateTimeField('Date Publication')
