@@ -7,6 +7,7 @@ admin.autodiscover()
 from core import views
 
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'sitemusique.views.home', name='home'),
@@ -17,7 +18,8 @@ urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='/admin')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^acceuil$', views.acceuil, name='acceuil')
+    url(r'^acceuil$', views.acceuil, name='acceuil'),
+    url(r'^photologue/', include('photologue.urls')),
 
 
 )

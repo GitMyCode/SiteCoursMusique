@@ -5,6 +5,7 @@ from models import (
                     Generique,
                     Professeurs,
                     Cours,
+                    Gallerie,
                     )
 class general(admin.ModelAdmin):
     class Media:
@@ -39,12 +40,12 @@ class GeneriqueAdmin(general):
 admin.site.register(Generique, GeneriqueAdmin)
 
 class CoursAdmin(general):
-    list_display = ('instruments' , 'prix', 'description' )
+    list_display = ('instruments' , 'prix' )
     fields = ['instruments' , 'prix', 'description','professeurs']
 admin.site.register(Cours, CoursAdmin)
 
 
-
+admin.site.register(Gallerie)
 
 class ProfesseursAdmin(general):
     list_display = ('prenom' , 'nom', 'biographie' )

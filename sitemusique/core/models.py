@@ -54,6 +54,9 @@ class Professeurs(Metadata):
     prenom = models.CharField(max_length=255)
     biographie = models.TextField()
 
+    def __unicode__(self):
+        return "%s  %s" % (self.nom, self.prenom)
+
 
 # =======================================================
 # Cours Model
@@ -67,6 +70,15 @@ class Cours(Metadata):
 
 
 
+
+# =======================================================
+# Gallerie Model
+# =======================================================
+class Gallerie(Metadata):
+    photos = models.ImageField(upload_to =
+                               'media/photos/',
+                               default =
+                               'media/photos/none/no-img.jpg')
 
 
 
