@@ -40,8 +40,8 @@ class GeneriqueAdmin(general):
 admin.site.register(Generique, GeneriqueAdmin)
 
 class CoursAdmin(general):
-    list_display = ('instruments' , 'prix' )
-    fields = ['instruments' , 'prix', 'description','professeurs']
+    list_display = ('instruments_fr','instruments_en' , 'prix' )
+    fields = ['instruments_fr','instruments' , 'prix', 'description','professeurs']
 admin.site.register(Cours, CoursAdmin)
 
 

@@ -1,7 +1,7 @@
 # Django settings for sitemusique project.
 import os
+from os.path import join, abspath, dirname
 from conf import *
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -10,6 +10,20 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+
+
+
+
+
+
+
+
+
+
+# If you set this to False, Django will make some optimizations so as not
+# to load the internationalization machinery.
+
 
 
 
@@ -27,7 +41,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 SITE_ID = 1
 
@@ -46,6 +60,21 @@ USE_TZ = True
 
 
 #####################  CHEMIN DU PROJET  #####################
+
+# =================================================
+#  PATHS CONFIGURATION
+# =================================================
+here = lambda *x: join(abspath(dirname(__file__)), *x)
+
+#root
+PROJECT_ROOT = here('..')
+root = lambda *x: join(abspath(PROJECT_ROOT), *x)
+
+
+# LOCALE
+LOCALE_PATHS = (
+    root('locale'),
+)
 
 
 PROJECT_ROOT = os.path.dirname(__file__)
@@ -81,6 +110,17 @@ STATICFILES_DIRS = (
 
 # List of finder classes that know how to find static files in
 # various locations.
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+
+)
+
+
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -100,6 +140,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -118,6 +159,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,6 +175,9 @@ INSTALLED_APPS = (
     'photologue',
     'south',
     'modeltranslation',
+)
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'sitemusique.core.translation',
 )
 
 gettext = lambda s: s

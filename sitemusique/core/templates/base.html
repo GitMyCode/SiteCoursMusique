@@ -1,59 +1,79 @@
+{% load i18n %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+ "http://www.w3.org/TR/html4/strict.dtd">
 
-<html lang="en">
+<html >
 
 
 
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>{% block title %}{% endblock %}</title>
-             <meta charset="UTF-8">
-     <meta http-equiv ="X-UA Compatible" content="IE=edge,chrome=1">
-     <!--[if IE]><![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta http-equiv ="X-UA Compatible" content="IE=edge,chrome=1">
+  <!--[if IE]><![endif]-->
 
-     <link rel="stylesheet" type="text/css" href="/static/css/960_24_col.css">
-     <link rel="stylesheet" type="text/css" href="/static/css/core.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/960_24_col.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/core.css">
 <!--      <link rel="stylesheet" type="text/css" href="css/style.css">
- -->
-     <!--[if lt IE 9]>     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>     <![endif]-->
+-->
+<!--[if lt IE 9]>     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>     <![endif]-->
 
 </head>
 
 
 <body id="{% block body_id %}{% endblock %}">
+{% get_current_language as LANGUAGE_CODE %}
+{% language 'fr' %}
+{% trans 'Acceuil' %}
+
+{% endlanguage %}
+
+
+
+{% language 'en' %}
+ {% get_current_language as LANGUAGE_CODE %}
+  Current language: {{ LANGUAGE_CODE }}
+  <p>{% trans "Acceuil" %}</p>
+   {% endlanguage %}
+
+
+
+
+{{ LANGUAGE_CODE }}
   <div id="body">
     {% block body %}
-      <div>
-        {% block content_title %}{% endblock %}
-      </div>
-      <header class="container_24">
+    <div>
+      {% block content_title %}
+      {% endblock content_title %}
+    </div>
+    <header class="container_24">
       <div class="choix_langue"><a href="">English</a>/<a href="">Français</a></div>
-        <div class="titre"></div>
+      <div class="titre"></div>
 
-        <div class="deco_partition"></div>
+      <div class="deco_partition"></div>
 
+      <nav class="nav_bar grid_16">
+        <ul>
+         <li><a href="/Acceuil">{% trans 'Acceuil' %}</a></li>
+         <li><a href="/Professeurs">{% trans "Professeurs" %}</a></li>
+         <li><a href="/Cours">{% trans "Cours" %}</a></li>
+         <li><a href="/Gallerie">{% trans "Gallerie" %}</a></li>
+         <li><a href="/AutresServices">{% trans "Autres Services" %}</a></li>
+         <li><a href="/Faq">{% trans "FAQ" %}</a></li>
+         <li><a href="/Contact">{% trans "Contact" %}</a></li>
+       </ul>
+     </nav>
 
-        <nav class="nav_bar grid_16">
-            <ul>
-               <li><a href="/Acceuil">Acceuil</a></li>
-               <li><a href="/Professeurs">Professeurs</a></li>
-               <li><a href="/Cours">Cours</a></li>
-               <li><a href="/Gallerie">Gallerie</a></li>
-               <li><a href="/AutresServices">Autres Services</a></li>
-               <li><a href="/Faq">FAQ</a></li>
-               <li><a href="/Contact">Contact</a></li>
-             </ul>
-        </nav>
-
-      </header>
-
+   </header>
 
 
-      <div class="content container_24">
-        {% block content %}{% endblock %}
-      </div>
-    {% endblock %}
+
+   <div class="content container_24">
+    {% block content %}
+    {% endblock content %}
   </div>
+  {% endblock body %}
+</div>
 </body>
 </html>

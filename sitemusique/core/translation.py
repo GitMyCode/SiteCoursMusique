@@ -13,3 +13,5 @@ class CoursTranslationOptions(TranslationOptions):
     fields = ('instruments',)
 
 translator.register(Cours, CoursTranslationOptions)
+
+
