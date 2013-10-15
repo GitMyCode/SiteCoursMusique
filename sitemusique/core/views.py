@@ -19,3 +19,4 @@ def acceuil(request):
             'generique':generique,
             }
     return render_to_response('acceuil.html', context )
+

@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic.base import RedirectView
 
 from django.contrib import admin
+from django.conf import settings
 admin.autodiscover()
 
 from core import views
@@ -18,8 +19,11 @@ urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='/admin')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^acceuil$', views.acceuil, name='acceuil'),
-    url(r'^photologue/', include('photologue.urls')),
+    url(r'^acceuil/$', views.acceuil, name='acceuil'),
+    url(r'^gallerie/', include('photologue.urls')),
 
 
+    # Permet de d'acceder a l'url des photo dans le repertoire media
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}),
 )
