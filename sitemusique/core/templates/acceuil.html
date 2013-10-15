@@ -1,13 +1,38 @@
 {% extends "base.html" %}
-<!DOCTYPE HTML>
-
 {% block content %}
 
-    {% if generique %}
-        {% for g in generique %}
-        <div id="textAcceuil" class="grid_24">{{ g.texteAcceuil|safe }}</div>
+{% if generique %}
+{% for g in generique %}
 
-        {% endfor %}
+<div class="wrap_slideshow">
+     <div class="slideshow"></div>
 
-    {% endif %}
+</div>
+
+<div class="acc_bienvenu">
+     <div id="acc_titre"></div>
+     <div id="acc_text" class="grid_24">{{ g.texteAcceuil|safe }}</div>
+
+</div>
+
+
+<div class="acc_showcase">
+     <div class="acc_cours">
+          <ul>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+          </ul>
+     </div>
+
+     <div class="acc_services"></div>
+
+     <div class="acc_professeurs"></div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
 {% endblock %}
