@@ -9,7 +9,7 @@ from models import (
                     )
 class general(admin.ModelAdmin):
     class Media:
-        js = ('media/js/tiny_mce/tiny_mce.js', 'media/js/tiny_mce/textareas.js',)
+        js = ('/static/js/tiny_mce/tiny_mce.js', '/static/js/tiny_mce/textareas.js',)
 
 
 class CommentInline(admin.TabularInline):

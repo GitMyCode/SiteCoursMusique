@@ -19,8 +19,13 @@ urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='/admin')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^acceuil/$', views.acceuil, name='acceuil'),
-    url(r'^gallerie/', include('photologue.urls')),
+    url(r'^Acceuil/$', views.acceuil, name='acceuil'),
+    url(r'^Gallerie/', include('photologue.urls')),
+    url(r'^Professeurs/$', views.professeurs, name='professeurs'),
+    url(r'^Cours/$', views.cours, name='cours'),
+    url(r'^AutresServices/$', views.autresServices, name='autresServices'),
+    url(r'^Faq/$', views.faq, name='faq'),
+    url(r'^Contact/$', views.contact, name='contact'),
 
 
     # Permet de d'acceder a l'url des photo dans le repertoire media
