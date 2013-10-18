@@ -13,29 +13,56 @@
      <!--[if IE]><![endif]-->
 
      <link rel="stylesheet" type="text/css" href="/static/css/960_24_col.css">
-    <!--  <link rel="stylesheet" type="text/css" href="css/reset.css">
-     <link rel="stylesheet" type="text/css" href="css/style.css">
+     <link rel="stylesheet" type="text/css" href="/static/css/core.css">
+<!--      <link rel="stylesheet" type="text/css" href="css/style.css">
  -->
      <!--[if lt IE 9]>     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>     <![endif]-->
 
 </head>
+
+<style type="text/css">
+
+ header,section,article,nav,footer {
+    display:block;}
+header nav.nav_bar{
+    display: inline;
+    list-style-type: none;
+}
+
+ ul{
+    overflow: hidden;
+}
+
+li{
+    margin-left: 0;
+    list-style: none;
+
+ }
+
+</style>
+
 <body id="{% block body_id %}{% endblock %}">
   <div id="body">
     {% block body %}
       <div>
         {% block content_title %}{% endblock %}
       </div>
-      <div class="nav_bar">
-          <ul>
-             <li><a href="/Acceuil">Acceuil</a></li>
-             <li><a href="/Professeurs">Professeurs</a></li>
-             <li><a href="/Cours">Cours</a></li>
-             <li><a href="/Gallerie">Gallerie</a></li>
-             <li><a href="/AutresServices">Autres Services</a></li>
-             <li><a href="/Faq">FAQ</a></li>
-             <li><a href="/Contact">Contact</a></li>
-           </ul>
-      </div>
+      <header class="container_16">
+        <nav class="nav_bar grid_9">
+            <ul>
+               <li><a href="/Acceuil">Acceuil</a></li>
+               <li><a href="/Professeurs">Professeurs</a></li>
+               <li><a href="/Cours">Cours</a></li>
+               <li><a href="/Gallerie">Gallerie</a></li>
+               <li><a href="/AutresServices">Autres Services</a></li>
+               <li><a href="/Faq">FAQ</a></li>
+               <li><a href="/Contact">Contact</a></li>
+             </ul>
+        </nav>
+
+      </header>
+
+
       <div class="content">
         {% block content %}{% endblock %}
       </div>
