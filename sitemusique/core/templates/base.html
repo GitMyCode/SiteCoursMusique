@@ -20,26 +20,6 @@
 
 </head>
 
-<style type="text/css">
-
- header,section,article,nav,footer {
-    display:block;}
-header nav.nav_bar{
-    display: inline;
-    list-style-type: none;
-}
-
- ul{
-    overflow: hidden;
-}
-
-li{
-    margin-left: 0;
-    list-style: none;
-
- }
-
-</style>
 
 <body id="{% block body_id %}{% endblock %}">
   <div id="body">
@@ -47,8 +27,8 @@ li{
       <div>
         {% block content_title %}{% endblock %}
       </div>
-      <header class="container_16">
-        <nav class="nav_bar grid_9">
+      <header class="container_24">
+        <nav class="nav_bar grid_16">
             <ul>
                <li><a href="/Acceuil">Acceuil</a></li>
                <li><a href="/Professeurs">Professeurs</a></li>
@@ -63,7 +43,7 @@ li{
       </header>
 
 
-      <div class="content">
+      <div class="content container_24">
         {% block content %}{% endblock %}
       </div>
     {% endblock %}
