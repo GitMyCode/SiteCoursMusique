@@ -131,7 +131,16 @@ INSTALLED_APPS = (
     'tinymce',
     'photologue',
     'south',
+    'modeltranslation',
 )
+
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('fr', gettext('French')),
+    ('en', gettext('English')),
+)
+MODELTRANSLATION_CUSTOM_FIELDS = ('TextField',)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
