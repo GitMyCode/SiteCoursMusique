@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load i18n %}
-{% if generique %}
-{% for g in generique %}
+
 
 <div class="wrap_slideshow">
      <div class="slideshow"></div>
@@ -11,7 +10,8 @@
 
 <div class="acc_bienvenu">
      <div id="acc_titre"></div>
-     <div id="acc_text" class="grid_24">{{ g.texteAcceuil|safe }}</div>
+
+     <div id="acc_text" class="grid_24">{{ generique.texteAcceuil|safe }}</div>
 
 </div>
 
@@ -25,14 +25,10 @@
                <li></li>
           </ul>
      </div>
-
      <div class="acc_services"></div>
 
      <div class="acc_professeurs"></div>
 
 </div>
 
-{% endfor %}
-
-{% endif %}
 {% endblock %}

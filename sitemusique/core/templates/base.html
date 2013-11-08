@@ -23,24 +23,7 @@
 
 
 <body id="{% block body_id %}{% endblock %}">
-{% get_current_language as LANGUAGE_CODE %}
-{% language 'fr' %}
-{% trans 'Acceuil' %}
 
-{% endlanguage %}
-
-
-
-{% language 'en' %}
- {% get_current_language as LANGUAGE_CODE %}
-  Current language: {{ LANGUAGE_CODE }}
-  <p>{% trans "Acceuil" %}</p>
-   {% endlanguage %}
-
-
-
-
-{{ LANGUAGE_CODE }}
   <div id="body">
     {% block body %}
     <div>
@@ -48,32 +31,68 @@
       {% endblock content_title %}
     </div>
     <header class="container_24">
-      <div class="choix_langue"><a href="">English</a>/<a href="">Français</a></div>
-      <div class="titre"></div>
+      <style>
 
-      <div class="deco_partition"></div>
+        form input[type="submit"]{
 
-      <nav class="nav_bar grid_16">
-        <ul>
-         <li><a href="/Acceuil">{% trans 'Acceuil' %}</a></li>
-         <li><a href="/Professeurs">{% trans "Professeurs" %}</a></li>
-         <li><a href="/Cours">{% trans "Cours" %}</a></li>
-         <li><a href="/Gallerie">{% trans "Gallerie" %}</a></li>
-         <li><a href="/AutresServices">{% trans "Autres Services" %}</a></li>
-         <li><a href="/Faq">{% trans "FAQ" %}</a></li>
-         <li><a href="/Contact">{% trans "Contact" %}</a></li>
-       </ul>
-     </nav>
+          background: none;
+          border: none;
+          color: blue;
+          text-decoration: underline;
+          cursor: pointer;
+        }
 
-   </header>
+      </style>
 
 
+      <div id="languages">
+      <table >
+        <tr>
+          <td>
+            <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="language" value="en"/>
+              <input id="lang_{{lang.0}}" type = "submit" value="Anglais" />/
 
-   <div class="content container_24">
-    {% block content %}
-    {% endblock content %}
+            </form>
+          </td>
+          <td>
+            <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="language" value="fr"/>
+              <input id="lang_{{lang.0}}" type = "submit" value="Francais" />
+
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+        <div class="titre"></div>
+
+        <div class="deco_partition"></div>
+
+        <nav class="nav_bar grid_16">
+          <ul>
+           <li><a href="/Acceuil">{% trans 'Acceuil' %}</a></li>
+           <li><a href="/Professeurs">{% trans "Professeurs" %}</a></li>
+           <li><a href="/Cours">{% trans "Cours" %}</a></li>
+           <li><a href="/Gallerie">{% trans "Gallerie" %}</a></li>
+           <li><a href="/AutresServices">{% trans "Autres Services" %}</a></li>
+           <li><a href="/Faq">{% trans "FAQ" %}</a></li>
+           <li><a href="/Contact">{% trans "Contact" %}</a></li>
+         </ul>
+       </nav>
+
+
+     </header>
+
+
+
+    <div class="content container_24">
+      {% block content %}
+      {% endblock content %}
+    </div>
+    {% endblock body %}
   </div>
-  {% endblock body %}
-</div>
 </body>
 </html>
