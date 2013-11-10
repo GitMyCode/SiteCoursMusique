@@ -10,7 +10,7 @@ translator.register(Generique, GeneriqueTranslationOptions)
 
 
 class CoursTranslationOptions(TranslationOptions):
-    fields = ('instruments',)
+    fields = ('instrument',)
 
 translator.register(Cours, CoursTranslationOptions)
 

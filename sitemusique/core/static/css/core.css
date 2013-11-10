@@ -2,6 +2,11 @@
 
 header,section,article,nav,footer {
     display:block;}
+
+ul li{
+    list-style-type:none;
+}
+
 nav.nav_bar ul{
     display: inline;
     list-style-type: none;
@@ -13,4 +18,12 @@ display: inline;
 list-style-type: none;
 padding-right: 20px;
 
+}
+
+.acc_cours ul li{
+    display: inline;
+    list-style-type: none;
+    overflow: hidden;
+    height: 190px;
+    margin-bottom: 30px;
 }

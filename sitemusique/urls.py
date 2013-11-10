@@ -31,5 +31,6 @@ urlpatterns = patterns('',
     # Permet de d'acceder a l'url des photo dans le repertoire media
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
 )

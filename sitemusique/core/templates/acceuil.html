@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load i18n %}
-{% if generique %}
-{% for g in generique %}
+
 
 <div class="wrap_slideshow">
      <div class="slideshow"></div>
@@ -10,29 +9,48 @@
 </div>
 
 <div class="acc_bienvenu">
-     <div id="acc_titre"></div>
-     <div id="acc_text" class="grid_24">{{ g.texteAcceuil|safe }}</div>
+     <div id="acc_titre">{{ generique.titreAcceuil }}</div>
+
+     <div id="acc_text" class="grid_24">{{ generique.texteAcceuil|safe }}</div>
 
 </div>
 
 
-<div class="acc_showcase">
-     <div class="acc_cours">
+<div class="acc_showcase container_24">
+     <div class="acc_cours grid_24">
+          <div class="acc_section_titre">Cours</div>
           <ul>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
+               {% for c in cours %}
+               <li class="grid_6 prefix_1">
+                    <span class="acc_c_instrument" >{{c.instrument}}</span>
+                    <div class="acc_c_description">{{c.description |safe}}</div>
+               </li>
+
+               {% endfor %}
           </ul>
      </div>
 
-     <div class="acc_services"></div>
 
-     <div class="acc_professeurs"></div>
+
+     <div class="acc_professeurs grid_12">
+         <div class="acc_section_titre">Professeurs</div>
+         <ul>
+           {% for p in professeurs %}
+           <li>
+                 <img class="grid_2" src="{{ p.photo.get_thumbnail_url }}" alt="">
+                 <div class="">{{p.prenom}} {{ p.nom }}</div>
+           </li>
+            {% endfor %}
+          </ul>
+
+     </div>
+
+
+<div class="acc_services grid_12">
+    <div class="acc_section_titre">Autres Services</div>
 
 </div>
 
-{% endfor %}
+</div>
 
-{% endif %}
 {% endblock %}

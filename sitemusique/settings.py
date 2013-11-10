@@ -165,7 +165,6 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
@@ -183,9 +182,13 @@ MODELTRANSLATION_TRANSLATION_FILES = (
 gettext = lambda s: s
 
 LANGUAGES = (
-    ('fr', gettext('French')),
-    ('en', gettext('English')),
+    ('en', 'English'),
+    ('fr', 'Francais'),
 )
+# LANGUAGES = (
+#     ('fr', gettext('French')),
+#     ('en', gettext('English')),
+# )
 MODELTRANSLATION_CUSTOM_FIELDS = ('TextField',)
 
 # A sample logging configuration. The only tangible logging

@@ -14,12 +14,16 @@ from sitemusique.core.models import (
 
 
 def acceuil(request):
-    generique = Generique.objects.all()
+    generique = Generique.objects.get(pk=1)
+    cours     = Cours.objects.all()
+    professeurs = Professeurs.objects.all()
 
     context = {
             'generique':generique,
+            'cours': cours,
+            'professeurs' : professeurs,
             }
-    return render_to_response('acceuil.html', context )
+    return render_to_response('acceuil.html', context,RequestContext(request) )
 
 
 def professeurs(request):
@@ -28,7 +32,7 @@ def professeurs(request):
     context = {
         'prof': prof,
     }
-    return render_to_response('professeurs.html',context)
+    return render_to_response('professeurs.html',context,RequestContext(request))
 
 
 def cours(request):
@@ -37,20 +41,20 @@ def cours(request):
     context = {
         'prof': prof,
     }
-    return render_to_response('cours.html',context)
+    return render_to_response('cours.html',context,RequestContext(request))
 
 
 def autresServices(request):
 
-    return render_to_response('autresServices.html')
+    return render_to_response('autresServices.html',RequestContext(request))
 
 def faq(request):
 
-    return render_to_response('faq.html')
+    return render_to_response('faq.html',RequestContext(request))
 
 def contact(request):
 
-    return render_to_response('contact.html')
+    return render_to_response('contact.html',RequestContext(request))
 
 
 

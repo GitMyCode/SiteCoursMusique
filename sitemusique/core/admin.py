@@ -1,4 +1,5 @@
 from django.contrib import admin
+from photologue.models import ImageModel
 from models import (
                     Blog,
                     Comment,
@@ -34,21 +35,23 @@ admin.site.register(Blog, BlogAdmin)
 
 
 class GeneriqueAdmin(general):
-    list_display = ('texteAcceuil' , 'texteContact' )
-    fields = ['texteAcceuil' , 'texteContact']
+    list_display = ( 'titreAcceuil', 'texteAcceuil' , 'texteContact' )
+    fields = ['titreAcceuil', 'texteAcceuil' , 'texteContact']
 
 admin.site.register(Generique, GeneriqueAdmin)
 
 class CoursAdmin(general):
-    list_display = ('instruments_fr','instruments_en' , 'prix' )
-    fields = ['instruments_fr','instruments' , 'prix', 'description','professeurs']
+    list_display = ('instrument_fr','instrument_en' , 'prix' )
+    fields = ['instrument_fr','instrument' , 'prix', 'description','professeurs']
 admin.site.register(Cours, CoursAdmin)
 
 
 admin.site.register(Gallerie)
 
 class ProfesseursAdmin(general):
-    list_display = ('prenom' , 'nom', 'biographie' )
-    fields = ['nom', 'prenom', 'biographie']
+    list_display = ('prenom' , 'nom', 'biographie','photo' )
+    fields = ['prenom','nom', 'biographie','photo']
 
 admin.site.register(Professeurs, ProfesseursAdmin)
+
+

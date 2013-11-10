@@ -3,6 +3,9 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from tinymce.models import HTMLField
+from photologue.models import (ImageModel,
+                              Gallery,
+                              Photo)
 
 PIANO = 'Piano'
 SAXOPHONE = 'Saxophone'
@@ -38,13 +41,18 @@ class Metadata(models.Model):
 
 
 
+class image_model(ImageModel):
+    pass
 # =======================================================
 # Generic Model
 # =======================================================
 
 class Generique(Metadata):
+    titreAcceuil = models.CharField(max_length=255)
+
     texteAcceuil = models.TextField()
     texteContact = models.TextField()
+
 
 # =======================================================
 # Teacher Model
@@ -53,6 +61,9 @@ class Professeurs(Metadata):
     nom = models.CharField(max_length=255)
     prenom = models.CharField(max_length=255)
     biographie = models.TextField()
+    #photo = models.ForeignKey(image_model,blank=True)
+    photo = models.OneToOneField(Photo,primary_key=True,blank=True)
+
 
     def __unicode__(self):
         return "%s  %s" % (self.nom, self.prenom)
@@ -64,7 +75,7 @@ class Professeurs(Metadata):
 
 class Cours(Metadata):
     professeurs = models.ManyToManyField(Professeurs)
-    instruments = models.CharField(max_length=255)
+    instrument = models.CharField(max_length=255)
     description = models.TextField()
     prix = models.FloatField()
 
@@ -113,7 +124,6 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.author + self.comment[:10]
-
 
 
 
