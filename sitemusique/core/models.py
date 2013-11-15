@@ -62,7 +62,7 @@ class Professeurs(Metadata):
     prenom = models.CharField(max_length=255)
     biographie = models.TextField()
     #photo = models.ForeignKey(image_model,blank=True)
-    photo = models.OneToOneField(Photo,primary_key=True,blank=True)
+    photo = models.OneToOneField(Photo,null=True,blank=True)
 
 
     def __unicode__(self):

@@ -2,4 +2,27 @@
 
 
 {% block content %}
+
+<div class="container_24">
+ <div class=" milieu">Professeurs</div>
+ <ul class="prof_liste">
+   {% for p in professeurs %}
+   <li>
+       <div class="prof_nom_photo grid_5">
+        <div class="prof_nom_professeur ">{{p.prenom}} {{ p.nom }}</div>
+        <img class="prof_photo" src="{{ p.photo.get_thumbnail_url }}" alt="">
+    </div>
+
+    <div class="prof_biographie_intru grid_18">
+       {% for c in p.cours_set.all reversed %}
+       <div class="prof_instru">{{c.instrument}}{% if not forloop.first %},&nbsp;{% endif %}
+       </div>
+       {% endfor %}
+       <div>{{p.biographie | safe}}</div>
+   </div>
+</li>
+{% endfor %}
+</ul>
+
+</div>
 {% endblock %}

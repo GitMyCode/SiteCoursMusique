@@ -8,8 +8,8 @@
 
 </div>
 
-<div class="acc_bienvenu">
-     <div id="acc_titre">{{ generique.titreAcceuil }}</div>
+<div class="acc_bienvenu container_24">
+     <div id="acc_titre" class="milieu ">{{ generique.titreAcceuil }}</div>
      <div id="acc_text" class="grid_24">{{ generique.texteAcceuil|safe }}</div>
 
 </div>
@@ -17,7 +17,7 @@
 
 <div class="acc_showcase container_24">
      <div class="acc_cours grid_24">
-          <div class="acc_section_titre">Cours</div>
+          <div class="acc_section_titre milieu ">Cours</div>
           <ul>
                {% for c in cours %}
                <li class="grid_6 prefix_1">
@@ -32,12 +32,12 @@
 
 
      <div class="acc_professeurs grid_12">
-         <div class="acc_section_titre">Professeurs</div>
-         <ul>
+         <div class="acc_section_titre milieu">Professeurs</div>
+         <ul class="acc_liste_professeur">
            {% for p in professeurs %}
            <li>
                  <img class="grid_2" src="{{ p.photo.get_thumbnail_url }}" alt="">
-                 <div class="">{{p.prenom}} {{ p.nom }}</div>
+                 <div class="acc_nom_professeur">{{p.prenom}} {{ p.nom }}</div>
            </li>
             {% endfor %}
           </ul>
@@ -45,7 +45,7 @@
      </div>
 
 <div class="acc_services grid_12">
-    <div class="acc_section_titre">Autres Services</div>
+    <div class="acc_section_titre milieu">Autres Services</div>
 
 </div>
 

@@ -27,10 +27,11 @@ def acceuil(request):
 
 
 def professeurs(request):
-    prof = Professeurs.objects.all()
+    professeurs = Professeurs.objects.all()
+    cours = Cours.objects.all()
 
     context = {
-        'prof': prof,
+        'professeurs': professeurs,
     }
     return render_to_response('professeurs.html',context,RequestContext(request))
 

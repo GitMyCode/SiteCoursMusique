@@ -49,7 +49,7 @@ admin.site.register(Cours, CoursAdmin)
 admin.site.register(Gallerie)
 
 class ProfesseursAdmin(general):
-    list_display = ('prenom' , 'nom', 'biographie','photo' )
+    list_display = ('prenom' , 'nom' )
     fields = ['prenom','nom', 'biographie','photo']
 
 admin.site.register(Professeurs, ProfesseursAdmin)

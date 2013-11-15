@@ -27,3 +27,54 @@ padding-right: 20px;
     height: 190px;
     margin-bottom: 30px;
 }
+
+.milieu{
+    margin-right: auto;
+    margin-left: auto;
+    width:100px;
+
+
+}
+
+ul.acc_liste_professeur li {
+  padding-bottom: 52px;
+}
+
+.acc_nom_professeur {
+    padding-left: 80px;
+
+}
+
+
+a {
+    color: #0254EB
+}
+a:visited {
+    color: #0254EB
+}
+a.morelink {
+    text-decoration:none;
+    outline: none;
+}
+.morecontent span {
+    display: none;
+}
+.comment {
+    width: 400px;
+    background-color: #f0f0f0;
+    margin: 10px;
+}
+/***********************
+  PROFESSEUR
+***********************/
+ul.prof_liste li{
+    padding-bottom: 50px;
+
+}
+.prof_photo{
+    width:180px;
+
+}
+.prof_instru{
+    float:right;
+}
