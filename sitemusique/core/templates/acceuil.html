@@ -37,7 +37,7 @@
            {% for p in professeurs %}
            <li>
                  <img class="grid_2" src="{{ p.photo.get_thumbnail_url }}" alt="">
-                 <div class="acc_nom_professeur">{{p.prenom}} {{ p.nom }}</div>
+                 <div class="acc_nom_professeur"><a href="/Professeurs#{{p.prenom}}{{ p.nom }}">{{p.prenom}} {{ p.nom }}</a></div>
            </li>
             {% endfor %}
           </ul>
@@ -46,6 +46,13 @@
 
 <div class="acc_services grid_12">
     <div class="acc_section_titre milieu">Autres Services</div>
+    <ul class="acc_liste_services">
+      {% for s in autresServices %}
+      <li>
+        {{s.nom}}
+      </li>
+      {% endfor %}
+    </ul>
 
 </div>
 

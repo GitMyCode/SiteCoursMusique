@@ -2,4 +2,24 @@
 
 
 {% block content %}
+
+<div class="container_24">
+ <div class=" milieu">Autres services</div>
+ <ul class="services_liste">
+   {% for s in autresServices %}
+   <li>
+       <div class="services_nom grid_5"><a  name="{{s.nom}}"></a>{{s.nom}}
+        <img class="services_photo" src="{{ p.photo.get_thumbnail_url }}" alt="">
+    </div>
+
+    <div class="services_description grid_18">
+       <div>{{s.description | safe}}</div>
+   </div>
+</li>
+{% endfor %}
+</ul>
+
+</div>
+
+
 {% endblock %}

@@ -8,7 +8,7 @@
  <ul class="prof_liste">
    {% for p in professeurs %}
    <li>
-       <div class="prof_nom_photo grid_5">
+       <div class="prof_nom_photo grid_5"><a  name="{{p.prenom}}{{ p.nom }}"></a>
         <div class="prof_nom_professeur ">{{p.prenom}} {{ p.nom }}</div>
         <img class="prof_photo" src="{{ p.photo.get_thumbnail_url }}" alt="">
     </div>

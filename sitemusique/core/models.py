@@ -92,6 +92,14 @@ class Gallerie(Metadata):
                                'media/photos/none/no-img.jpg')
 
 
+# =======================================================
+# AutresServices Model
+# =======================================================
+
+class AutresServices(Metadata):
+    prix = models.FloatField()
+    nom = models.CharField(max_length=255)
+    description = models.TextField()
 
 
 # =======================================================

@@ -1,4 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+<div class="container_24">
+ <div class=" milieu">Cours</div>
+ <ul class="cours_liste">
+   {% for c in cours %}
+   <li>
+       <div class="cours_instru_photo grid_5"><a  name="{{c.instrument}}"></a>
+        <div class="cours_instrument ">{{c.instrument}}</div>
+        <img class="cours_photo" src="{{ p.photo.get_thumbnail_url }}" alt="">
+    </div>
+
+    <div class="cours_biographie grid_18">
+       <div>{{c.description | safe}}</div>
+   </div>
+</li>
+{% endfor %}
+</ul>
+
+</div>
+
 {% endblock %}
