@@ -1,6 +1,6 @@
 from django.contrib import admin
 from photologue.models import ImageModel
-from models import (
+from sitemusique.core.models import (
                     Blog,
                     Comment,
                     Generique,

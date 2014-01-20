@@ -1,5 +1,5 @@
 from modeltranslation.translator import translator, TranslationOptions
-from models import Generique,Professeurs,Cours
+from sitemusique.core.models import Generique,Professeurs,Cours
 
 class GeneriqueTranslationOptions(TranslationOptions):
     fields = ('texteAcceuil','texteContact',)

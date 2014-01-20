@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.conf import settings
 admin.autodiscover()
 
-from core import views
+from sitemusique.core import views
 
 
 

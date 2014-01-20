@@ -1,7 +1,7 @@
 # Django settings for sitemusique project.
 import os
 from os.path import join, abspath, dirname
-from conf import *
+from sitemusique.conf import *
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
